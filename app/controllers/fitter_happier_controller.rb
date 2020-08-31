@@ -2,12 +2,12 @@ class FitterHappierController < ActionController::Base
   layout nil
 
   def index
-    render(:text => "FitterHappier Site Check Passed\n")
+    render plain: "FitterHappier Site Check Passed\n"
   end
 
   def site_check
     time = Time.now.rfc822
-    render(:text => "FitterHappier Site Check Passed @ #{time}\n")
+    render plain: "FitterHappier Site Check Passed @ #{time}\n"
   end
 
   def site_and_database_check
@@ -15,7 +15,7 @@ class FitterHappierController < ActionController::Base
     query      = "SELECT max(lpad(version, 20)) FROM #{table_name}"
     version    = ActiveRecord::Base.connection.select_value(query).to_i
     time       = Time.now.rfc822
-    render(:text => "FitterHappier Site and Database Check Passed @ #{time}\nSchema Version: #{version}\n")
+    render plain: "FitterHappier Site and Database Check Passed @ #{time}\nSchema Version: #{version}\n"
   end
 
   private
