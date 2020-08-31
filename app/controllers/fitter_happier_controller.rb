@@ -21,7 +21,7 @@ class FitterHappierController < ActionController::Base
   private
 
   def process_with_silence(*args)
-    logger.quietly do
+    logger.silence do
       process_without_silence(*args)
     end
   end
